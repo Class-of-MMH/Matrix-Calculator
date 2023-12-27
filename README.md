@@ -34,10 +34,13 @@ Find the determinant of a square matrix.
 7. Rank calculation:
 Find the rank of a matrix.
 
-9. LU factorization:
-Find the lu factorizarion of a matrix.
+9. LU DECOMPOSITION:
+Find the lu decomposition of a matrix.
 
-10. User-Friendly Interface: 
+ 10. Trace:
+ Find the trace of a matrix.  
+
+11. User-Friendly Interface: 
 Provide a clear and interactive interface for users to input matrices and select operations.<b/>
 
 
