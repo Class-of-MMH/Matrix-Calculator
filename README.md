@@ -40,8 +40,7 @@ Find the lu decomposition of a matrix.
  10. Trace:
  Find the trace of a matrix.  
 
-11. User-Friendly Interface: 
-Provide a clear and interactive interface for users to input matrices and select operations.<b/>
+<b/>
 
 
 # 4. Deliverables
