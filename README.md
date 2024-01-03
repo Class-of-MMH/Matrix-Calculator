@@ -13,7 +13,7 @@ Implement functions for basic matrix operations, including addition, subtraction
 # 3. Features
 <b>The Matrix Calculator will include the following features:
 
- 1. Addition and Subtraction: 
+ 1. Addition : 
 Perform addition  of two matrices.
 
 2. Subtraction: 
