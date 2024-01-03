@@ -14,24 +14,27 @@ Implement functions for basic matrix operations, including addition, subtraction
 <b>The Matrix Calculator will include the following features:
 
  1. Addition and Subtraction: 
-Perform addition and subtraction of two matrices.
+Perform addition  of two matrices.
 
-2. Scalar Multiplication: 
+2. Subtraction: 
+Perform subtraction of two matrices.
+
+3. Scalar Multiplication: 
 Multiply a matrix by a scalar.
 
-3. Matrix Multiplication: 
+4. Matrix Multiplication: 
 Multiply two matrices.
 
-4. Transposition: 
+5. Transposition: 
 Calculate the transpose of a matrix.
 
-5. Determinant Calculation: 
+6. Determinant Calculation: 
 Find the determinant of a square matrix.
 
-6. Invese calculation:
+7. Invese calculation:
  Find the inverse of a n*n matrix.
 
-7. Rank calculation:
+8. Rank calculation:
 Find the rank of a matrix.
 
 9. LU DECOMPOSITION:
