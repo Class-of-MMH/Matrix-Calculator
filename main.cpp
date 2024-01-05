@@ -241,6 +241,21 @@ int matrixTrace(const std::vector<std::vector<int>>& matrix) {
 
     return trace;
 }
+vector<vector<int>> multiplyMatrixByScalar(const vector<vector<int>>& matrix, int n) {
+
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+
+    vector<vector<int>> result(rows, vector<int>(cols, 0));
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result[i][j] = matrix[i][j] * n;
+        }
+    }
+
+    return result;
+}
+
 
 
 int main()
