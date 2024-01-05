@@ -328,7 +328,9 @@ int main()
             }
         }
 
-        
+             vector<vector<int>> result;
+        double determinantResult;
+        vector<vector<int>> L, U;  
     
   return 0;
 }
