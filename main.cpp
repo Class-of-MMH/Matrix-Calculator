@@ -363,6 +363,58 @@ int main()
                 return 1;
             }
             break;
+
+             case 5:
+              {
+
+            vector<vector<int>> result = transposeMatrix(matrix1);
+
+
+            cout << "Transposed Matrix:" << endl;
+            for (const auto& row : result) {
+                for (int val : row) {
+                    cout << val << " ";
+                }
+                cout << endl;
+            }
+            break;
+        }
+
+
+         case 6:
+
+            if (rows == cols) {
+                determinantResult = determinantMatrix(matrix1);
+                cout << "Determinant: " << determinantResult << endl;
+            } else {
+                cout << "Invalid choice! Please enter a square matrix for determinant calculation." << endl;
+                return 1;
+            }
+            break;
+        case 7:
+            cout<< "Rank is:"<<findMatrixRank(matrix1)<<endl;
+            break;
+
+        case 8:
+
+            luDecomposition(matrix1, L, U);
+
+            cout << "Matrix L:" << endl;
+            for (const auto& row : L) {
+                for (int val : row) {
+                    cout << val << " ";
+                }
+                cout << endl;
+            }
+
+            cout << "\nMatrix U:" << endl;
+            for (const auto& row : U) {
+                for (int val : row) {
+                    cout << val << " ";
+                }
+                cout << endl;
+            }
+            break;
     
   return 0;
 }
