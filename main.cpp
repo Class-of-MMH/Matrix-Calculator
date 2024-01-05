@@ -225,7 +225,22 @@ void luDecomposition(const vector<vector<int>>& A, vector<vector<int>>& L, vecto
     }
 }
 
+int matrixTrace(const std::vector<std::vector<int>>& matrix) {
 
+    int n = matrix.size();
+    for (int i = 0; i < n; ++i) {
+        if (matrix[i].size() != n) {
+            throw std::invalid_argument("Input matrix must be square");
+        }
+    }
+
+    int trace = 0;
+    for (int i = 0; i < n; ++i) {
+        trace += matrix[i][i];
+    }
+
+    return trace;
+}
 
 
 int main()
