@@ -442,6 +442,12 @@ int main()
             cout << "Invalid choice! Please enter a number between 1 and 3." << endl;
             return 1;
     } 
-    
-  return 0;
-}
+
+          if (choice != 0) {
+            displayResult(result);
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}  
