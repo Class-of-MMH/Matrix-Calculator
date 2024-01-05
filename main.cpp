@@ -109,26 +109,29 @@ vector<vector<double>> inverseMatrix(const vector<vector<int>>& mat) {
 
     return inverse;
 }
-vector<vector<int>> subtractMatrices(const vector<vector<int>>& matrix1, const vector<vector<int>>& matrix2) {
-    int rows1 = matrix1.size();
-    int cols1 = matrix1[0].size();
-    int rows2 = matrix2.size();
-    int cols2 = matrix2[0].size();
+vector<vector<int>> minorMatrix(const vector<vector<int>>& mat, int row, int col) {
+    int rows = mat.size();
+    int cols = mat[0].size();
 
-    if (rows1 != rows2 || cols1 != cols2) {
-        cout << "Invalid matrix subtraction: Matrices must have the same dimensions." << endl;
-        return {};
-    }
+    vector<vector<int>> minor(rows - 1, vector<int>(cols - 1));
 
-    vector<vector<int>> result(rows1, vector<int>(cols1, 0));
-
-    for (int i = 0; i < rows1; ++i) {
-        for (int j = 0; j < cols1; ++j) {
-            result[i][j] = matrix1[i][j] - matrix2[i][j];
+    for (int i = 0, r = 0; i < rows; ++i) {
+        if (i == row) {
+            continue; 
         }
+
+        for (int j = 0, c = 0; j < cols; ++j) {
+            if (j == col) {
+                continue; 
+            }
+
+            minor[r][c++] = mat[i][j];
+        }
+
+        ++r;
     }
 
-    return result;
+    return minor;
 }
 
 vector<vector<int>> transposeMatrix(const vector<vector<int>>& mat) {
