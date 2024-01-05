@@ -330,7 +330,39 @@ int main()
 
              vector<vector<int>> result;
         double determinantResult;
-        vector<vector<int>> L, U;  
+        vector<vector<int>> L, U; 
+
+                switch (choice) {
+
+
+
+            case 1:
+            result = addMatrices(matrix1, matrix2);
+            break;
+        case 2:
+            result = subtractMatrices(matrix1, matrix2);
+            break;
+        case 3:
+            result = multiplyMatrices(matrix1, matrix2);
+            break;
+
+        case 4:
+
+            if (rows == cols) {
+                vector<vector<double>> result = inverseMatrix(matrix1);
+
+                cout << "Inverse Matrix:" << endl;
+                for (const auto &row : result) {
+                    for (double val : row) {
+                        cout << val << " ";
+                    }
+                    cout << endl;
+                }
+            } else {
+                cout << "Invalid choice! Please enter a square matrix for inversion." << endl;
+                return 1;
+            }
+            break;
     
   return 0;
 }
