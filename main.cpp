@@ -415,6 +415,33 @@ int main()
                 cout << endl;
             }
             break;
+
+            case 9:
+             cout << "Trace: " << matrixTrace(matrix1) << endl;
+            break;
+    
+         case 10: {
+            int scalar;
+            cout << "Enter the scalar for multiplication: ";
+            cin >> scalar;
+
+            vector<vector<int>> result = multiplyMatrixByScalar(matrix1, scalar);
+
+            cout << "Matrix multiplied by " << scalar << ":\n";
+            for (const auto& row : result) {
+                for (int value : row) {
+                    cout << value << " ";
+                }
+                cout << endl;
+            }
+            break;
+        }
+         
+           
+        default:
+            cout << "Invalid choice! Please enter a number between 1 and 3." << endl;
+            return 1;
+    } 
     
   return 0;
 }
