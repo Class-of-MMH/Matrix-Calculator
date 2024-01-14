@@ -302,6 +302,24 @@ void displayResult(const vector<vector<int>>& result) {
     }
 }
 
+void displayPreviousResults() {
+    ifstream inputFile("previous_results.txt");
+
+    if (inputFile.is_open()) {
+        string line;
+        cout << "Previous Results:" << endl;
+        while (getline(inputFile, line)) {
+            cout << line << endl;
+        }
+
+        inputFile.close();
+    } else {
+        cout << "Error opening the file for reading." << endl;
+    }
+}
+
+
+
 int main()
 {
         int choice;
