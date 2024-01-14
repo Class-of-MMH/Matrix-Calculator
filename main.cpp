@@ -1,8 +1,8 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <vector>
-
 using namespace std;
+
 
 template<typename T>
 void displayResult(const vector<vector<T>>& result) {
@@ -31,6 +31,34 @@ void displayResult(const vector<vector<T>>& result) {
 
         outputFile.close();
         cout << "Result saved to previous_results.txt." << endl;
+    } else {
+        cout << "Error opening the file for writing." << endl;
+    }
+}
+
+
+void storeLUInFile(const vector<vector<int>>& L, const vector<vector<int>>& U) {
+    ofstream luFile("lu_decomposition.txt");
+
+    if (luFile.is_open()) {
+        luFile << "Matrix L:" << endl;
+        for (const auto& row : L) {
+            for (int val : row) {
+                luFile << val << " ";
+            }
+            luFile << endl;
+        }
+
+        luFile << "\nMatrix U:" << endl;
+        for (const auto& row : U) {
+            for (int val : row) {
+                luFile << val << " ";
+            }
+            luFile << endl;
+        }
+
+        luFile.close();
+        cout << "LU decomposition saved to lu_decomposition.txt." << endl;
     } else {
         cout << "Error opening the file for writing." << endl;
     }
@@ -292,7 +320,7 @@ vector<vector<int>> multiplyMatrixByScalar(const vector<vector<int>>& matrix, in
     return result;
 }
 
-void displayResult(const vector<vector<int>>& result) {
+void displayresult(const vector<vector<int>>& result) {
     cout << "Resultant Matrix:" << endl;
     for (const auto& row : result) {
         for (int val : row) {
@@ -301,6 +329,8 @@ void displayResult(const vector<vector<int>>& result) {
         cout << endl;
     }
 }
+
+
 
 void displayPreviousResults() {
     ifstream inputFile("previous_results.txt");
@@ -317,7 +347,6 @@ void displayPreviousResults() {
         cout << "Error opening the file for reading." << endl;
     }
 }
-
 
 
 int main()
@@ -338,6 +367,8 @@ int main()
         cout << " [8] LU DECOMPOSITION\n";
         cout << " [9] TRACE\n";
         cout << " [10] MULTIPLY MATRIX BY SCALAR\n";
+       
+
 
         cout << "=======================\n";
         cin >> choice;
@@ -400,39 +431,27 @@ int main()
             result = multiplyMatrices(matrix1, matrix2);
             break;
 
-        case 4:
 
-            if (rows == cols) {
-                vector<vector<double>> result = inverseMatrix(matrix1);
+          case 4:
+    if (rows == cols) {
+        vector<vector<double>> inverseResult = inverseMatrix(matrix1);
 
-                cout << "Inverse Matrix:" << endl;
-                for (const auto &row : result) {
-                    for (double val : row) {
-                        cout << val << " ";
-                    }
-                    cout << endl;
-                }
-            } else {
-                cout << "Invalid choice! Please enter a square matrix for inversion." << endl;
-                return 1;
-            }
-            break;
-
-             case 5:
-              {
-
-            vector<vector<int>> result = transposeMatrix(matrix1);
+        cout << "Inverse Matrix:" << endl;
+        displayResult(inverseResult);
+    } else {
+        cout << "Invalid choice! Please enter a square matrix for inversion." << endl;
+        return 1;
+    }
+    break;
 
 
-            cout << "Transposed Matrix:" << endl;
-            for (const auto& row : result) {
-                for (int val : row) {
-                    cout << val << " ";
-                }
-                cout << endl;
-            }
-            break;
-        }
+case 5:
+{
+    vector<vector<int>> transposeResult = transposeMatrix(matrix1);
+    cout << "Transposed Matrix:" << endl;
+    displayResult(transposeResult);
+    break;
+}
 
 
          case 6:
@@ -449,48 +468,38 @@ int main()
             cout<< "Rank is:"<<findMatrixRank(matrix1)<<endl;
             break;
 
-        case 8:
+    case 8:
+        luDecomposition(matrix1, L, U);
 
-            luDecomposition(matrix1, L, U);
+        cout << "Matrix L:" << endl;
+        displayResult(L);
 
-            cout << "Matrix L:" << endl;
-            for (const auto& row : L) {
-                for (int val : row) {
-                    cout << val << " ";
-                }
-                cout << endl;
-            }
+        cout << "\nMatrix U:" << endl;
+        displayResult(U);
 
-            cout << "\nMatrix U:" << endl;
-            for (const auto& row : U) {
-                for (int val : row) {
-                    cout << val << " ";
-                }
-                cout << endl;
-            }
-            break;
+ 
+        storeLUInFile(L, U);
+        break;
 
             case 9:
              cout << "Trace: " << matrixTrace(matrix1) << endl;
             break;
     
-         case 10: {
-            int scalar;
-            cout << "Enter the scalar for multiplication: ";
-            cin >> scalar;
+case 10:
+{
+    int scalar;
+    cout << "Enter the scalar for multiplication: ";
+    cin >> scalar;
 
-            vector<vector<int>> result = multiplyMatrixByScalar(matrix1, scalar);
+    vector<vector<int>> result = multiplyMatrixByScalar(matrix1, scalar);
 
-            cout << "Matrix multiplied by " << scalar << ":\n";
-            for (const auto& row : result) {
-                for (int value : row) {
-                    cout << value << " ";
-                }
-                cout << endl;
-            }
-            break;
-        }
-         
+    cout << "Matrix multiplied by " << scalar << ":\n";
+    displayResult(result);
+    break;
+}
+
+
+
            
         default:
             cout << "Invalid choice! Please enter a number between 1 and 3." << endl;
@@ -504,4 +513,4 @@ int main()
     } while (choice != 0);
 
     return 0;
-}  
+}   
