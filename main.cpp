@@ -1,7 +1,43 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 using namespace std;
+
+template<typename T>
+void displayResult(const vector<vector<T>>& result) {
+    cout << "Resultant Matrix:" << endl;
+    for (const auto& row : result) {
+        for (const T& val : row) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+
+   
+    ofstream outputFile("previous_results.txt", ios::app);
+
+    if (outputFile.is_open()) {
+ 
+        for (const auto& row : result) {
+            for (const T& val : row) {
+                outputFile << val << " ";
+            }
+            outputFile << endl;
+        }
+
+        outputFile << "-------------------------" << endl;
+
+
+        outputFile.close();
+        cout << "Result saved to previous_results.txt." << endl;
+    } else {
+        cout << "Error opening the file for writing." << endl;
+    }
+}
+
+
+
 vector<vector<int>> addMatrices(const vector<vector<int>>& matrix1, const vector<vector<int>>& matrix2) {
     int rows1 = matrix1.size();
     int cols1 = matrix1[0].size();
